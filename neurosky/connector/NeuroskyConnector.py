@@ -13,6 +13,7 @@ class NeuroskyConnector:
         if(self.target_address is not None):
             print("Device found!")
             self.connect_bluetooth_addr()
+            return self.socket
         else:
             print("Could not find target bluetooth device nearby")
 
