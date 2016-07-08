@@ -1,5 +1,7 @@
 import bluetooth
 from bluetooth.btcommon import BluetoothError
+
+
 import time
 
 class NeuroskyConnector:
