@@ -1,8 +1,6 @@
 from neurosky.connector.NeuroskyConnector import NeuroskyConnector
 from bluetooth.btcommon import BluetoothError
 from parser import  ThinkGearParser, TimeSeriesRecorder
-import pyttsx
-import time
 import wink
 
 
@@ -11,9 +9,6 @@ socket = conn.getConnectionInstance()
 recorder = TimeSeriesRecorder()
 parser = ThinkGearParser(recorders= [recorder])
 
-engine = pyttsx.init()
-engine.setProperty('rate', 60)
-engine.say("Yes")
 
 w = wink.Wink()
 
