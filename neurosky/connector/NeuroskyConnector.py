@@ -9,6 +9,8 @@ class NeuroskyConnector:
     target_address = None
     socket = None
 
+    def __init__(self):
+        pass
 
     def getConnectionInstance(self):
         self.deviceDiscovery()
@@ -29,12 +31,12 @@ class NeuroskyConnector:
         except BluetoothError, e:
             print "bluetooth is off"
 
-    def connect_bluetooth_addr(addr):
+    def connect_bluetooth_addr(self):
         for i in range(1,5):
             time.sleep(1)
             sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
             try:
-                sock.connect((addr.target_address, 1))
+                sock.connect((self.target_address, 1))
                 sock.setblocking(False)
                 NeuroskyConnector.socket = sock
                 return
