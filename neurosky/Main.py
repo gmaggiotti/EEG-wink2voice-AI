@@ -28,6 +28,9 @@ while socket is not None:
             t.sayYes()
         elif( count == 2 ):
             t.sayNo()
+        elif( count == 3 ):
+            t.sayHelp()
+
 
     except BluetoothError:
         pass

@@ -1,33 +1,39 @@
 import bluetooth
 from bluetooth.btcommon import BluetoothError
-
-
 import time
 
 class NeuroskyConnector:
-    target_name = "MindWave Mobile"
-    target_address = None
-    socket = None
+
+    """ Class that allows to discover and connect to the mindwave headset thru usb"""
+
+    TARGET_NAME = "MindWave Mobile"
+    TARGET_ADDRESS = None
+    SOCKET = None
 
     def __init__(self):
         pass
 
     def getConnectionInstance(self):
         self.deviceDiscovery()
-        if(self.target_address is not None):
+        if(NeuroskyConnector.TARGET_ADDRESS is not None):
             print("Device found!")
             self.connect_bluetooth_addr()
-            return self.socket
+            return NeuroskyConnector.SOCKET
         else:
             print("Could not find target bluetooth device nearby")
 
     def deviceDiscovery(self):
         try:
             nearby_devices = bluetooth.discover_devices(lookup_names = True, duration=5)
+            while nearby_devices.__len__() == 0 and tries < 3:
+                nearby_devices = bluetooth.discover_devices(lookup_names = True, duration=5)
+                tries += 1
+                time.sleep (200.0 / 1000.0)
+                print "couldn't connect! trying again..."
             for bdaddr, name in nearby_devices:
-                if bdaddr and name == self.target_name:
-                    NeuroskyConnector.target_address = bdaddr
-                    NeuroskyConnector.target_name = name
+                if bdaddr and name == NeuroskyConnector.TARGET_NAME:
+                    NeuroskyConnector.TARGET_ADDRESS = bdaddr
+                    NeuroskyConnector.TARGET_NAME = name
         except BluetoothError, e:
             print "bluetooth is off"
 
@@ -36,9 +42,9 @@ class NeuroskyConnector:
             time.sleep(1)
             sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
             try:
-                sock.connect((self.target_address, 1))
+                sock.connect((NeuroskyConnector.TARGET_ADDRESS, 1))
                 sock.setblocking(False)
-                NeuroskyConnector.socket = sock
+                NeuroskyConnector.SOCKET = sock
                 return
             except BluetoothError, e:
                 print("Could not connect to the device")

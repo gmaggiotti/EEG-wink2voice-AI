@@ -17,3 +17,8 @@ class Talk:
         time.sleep(1)
         self.engine.runAndWait()
 
+    def sayHelp(self):
+        self.engine.say("Help")
+        time.sleep(1)
+        self.engine.runAndWait()
+
