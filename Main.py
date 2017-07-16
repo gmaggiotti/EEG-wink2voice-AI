@@ -1,8 +1,9 @@
-from neurosky.connector.NeuroskyConnector import NeuroskyConnector
+from connector.NeuroskyConnector import NeuroskyConnector
 from bluetooth.btcommon import BluetoothError
-from parser import  ThinkGearParser, TimeSeriesRecorder
+from neurosky.parser import  ThinkGearParser, TimeSeriesRecorder
 import wink, states
 from Talk import Talk
+import sys
 
 conn = NeuroskyConnector()
 socket = conn.getConnectionInstance()
@@ -21,13 +22,15 @@ while socket is not None:
 
 
         max = recorder.raw[-100:].max()
-        if( w.detectWink(max) ):
-            s.addWink()
-        count = s.getWinkWithinDelta()
-        if( count == 1 ):
-            t.sayYes()
-        elif( count == 2 ):
-            t.sayNo()
+        sys.stdout.write(str(max)+',')
+
+        # if( w.detectWink(max) ):
+        #     s.addWink()
+        # count = s.getWinkWithinDelta()
+        # if( count == 1 ):
+        #     t.sayYes()
+        # elif( count == 2 ):
+        #     t.sayNo()
 
 
     except BluetoothError:
