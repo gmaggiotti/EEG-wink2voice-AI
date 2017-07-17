@@ -21,14 +21,6 @@ class A4NN:
 
 
     def train(self):
-        # X = 2*np.loadtxt(path+"/train_dataset.csv",delimiter=",")/600 - 1
-        # y = np.loadtxt(path+"/label_dataset.csv",delimiter=",").reshape(X.__len__(),1)
-
-        # np.random.seed(1)
-        # syn0 = 2*np.random.random((X.size/X.__len__(),X.__len__())) - 1
-        # syn1 = 2*np.random.random((X.__len__(),X.__len__())) - 1
-        # syn2 = 2*np.random.random((X.__len__(),1)) - 1
-
         for j in xrange(60000):
 
             # Calculate forward through the network.
@@ -71,8 +63,8 @@ net = A4NN()
 net.train()
 test_dataset=[87,87,97,97,97,97,97,97,97,97,97,97,107,107,107,107,107,107,167,247,55,29,59,59,29,29,29,129,129,129,129,307,309,92,37,60,72,75,97]
 result = net.predict(test_dataset)
-print("Output of example should be:" + repr(result))
+print("test-set validation.  Expected: ~0 - Result:" + repr(result))
 
 test_dataset=[85,85,85,85,85,85,85,85,85,72,72,72,97,149,337,436,436,436,436,436,436,436,436,436,436,401,295,55,55,55,55,65,121,141,141,141,141,141,141]
 result = net.predict(test_dataset)
-print("Output of example should be:" + repr(result))
+print("test-set validation.  Expected: ~1 - Result:l" + repr(result))

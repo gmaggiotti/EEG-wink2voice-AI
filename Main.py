@@ -19,11 +19,11 @@ net = A4NN()
 net.train()
 test_dataset=[87,87,97,97,97,97,97,97,97,97,97,97,107,107,107,107,107,107,167,247,55,29,59,59,29,29,29,129,129,129,129,307,309,92,37,60,72,75,97]
 result = net.predict(test_dataset)
-print("Output of example should be:" + repr(result))
+print("test-set validation.  Expected: ~0 - Result:" + repr(result))
 
 test_dataset=[85,85,85,85,85,85,85,85,85,72,72,72,97,149,337,436,436,436,436,436,436,436,436,436,436,401,295,55,55,55,55,65,121,141,141,141,141,141,141]
 result = net.predict(test_dataset)
-print("Output of example should be:" + repr(result))
+print("test-set validation.  Expected: ~1 - Result:" + repr(result))
 i=0
 myList=[]
 while socket is not None:
