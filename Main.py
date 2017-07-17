@@ -39,7 +39,7 @@ while socket is not None:
             print("Output of example should be:" + repr(prediction))
             if( prediction > 0.8 ):
                 s.addWink()
-                count = s.getWinkWithinDelta()
+            count = s.getWinkWithinDelta()
             if( count == 1 ):
                 t.sayYes()
             elif( count == 2 ):

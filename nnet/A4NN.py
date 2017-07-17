@@ -7,6 +7,7 @@ def sigmoid(x, deriv=False):
     return 1/(1 + np.exp(-x))
 
 path = os.path.dirname(os.path.abspath(__file__))
+np.random.seed(5)
 
 class A4NN:
 
@@ -38,7 +39,7 @@ class A4NN:
 
             # Error back propagation of errors using the chain rule.
             l3_error = self.y - l3
-            if(j % 10000) == 0:   # Only print the error every 10000 steps, to save time and limit the amount of output.
+            if(j % 10000) == 0:   # Only print the error every 10000 steps.
                 print("Error: " + str(np.mean(np.abs(l3_error))))
 
             l3_adjustment = l3_error*sigmoid(l3, deriv=True)
@@ -66,3 +67,12 @@ class A4NN:
         return l3[0] #since process X1[0] output would be l2[0]
 
 
+net = A4NN()
+net.train()
+test_dataset=[87,87,97,97,97,97,97,97,97,97,97,97,107,107,107,107,107,107,167,247,55,29,59,59,29,29,29,129,129,129,129,307,309,92,37,60,72,75,97]
+result = net.predict(test_dataset)
+print("Output of example should be:" + repr(result))
+
+test_dataset=[85,85,85,85,85,85,85,85,85,72,72,72,97,149,337,436,436,436,436,436,436,436,436,436,436,401,295,55,55,55,55,65,121,141,141,141,141,141,141]
+result = net.predict(test_dataset)
+print("Output of example should be:" + repr(result))
