@@ -15,7 +15,7 @@ class States:
     def getWinkWithinDelta(self):
         w = self.winks
         delta = time.time() - self.t1
-        print delta
+        #print delta
         print w
 
         if(delta > 2 ):
