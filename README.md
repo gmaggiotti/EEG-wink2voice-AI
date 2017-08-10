@@ -1,1 +1,1 @@
-EEG  human communication interface.   It recognize winks and translates them into directives through voice.
+EEG  human communication interface that use deep learning to understand gestures. Gets data through the Neurosky interface and then, uses a neural network to detects and recognizes such gestures, such as an eye wink.
