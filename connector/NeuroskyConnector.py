@@ -21,15 +21,12 @@ class NeuroskyConnector:
             return NeuroskyConnector.SOCKET
         else:
             print("Could not find target bluetooth device nearby")
+            exit()
+
 
     def deviceDiscovery(self):
         try:
             nearby_devices = bluetooth.discover_devices(lookup_names = True, duration=5)
-            while nearby_devices.__len__() == 0 and tries < 3:
-                nearby_devices = bluetooth.discover_devices(lookup_names = True, duration=5)
-                tries += 1
-                time.sleep (200.0 / 1000.0)
-                print "couldn't connect! trying again..."
             for bdaddr, name in nearby_devices:
                 if bdaddr and name == NeuroskyConnector.TARGET_NAME:
                     NeuroskyConnector.TARGET_ADDRESS = bdaddr

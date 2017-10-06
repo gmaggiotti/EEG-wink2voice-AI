@@ -47,8 +47,6 @@ class A4NN:
             self.syn1 += l1.T.dot(l2_adjustment)
             self.syn0 += l0.T.dot(l1_adjustment)
 
-        print("Output after training")
-        print(l3)
 
     def predict(self,X1):
         l0 = np.zeros((self.X.__len__(),self.X.size/self.X.__len__()))
