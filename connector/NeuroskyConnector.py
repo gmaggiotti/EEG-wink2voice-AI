@@ -44,5 +44,5 @@ class NeuroskyConnector:
                 NeuroskyConnector.SOCKET = sock
                 return
             except BluetoothError, e:
-                print("Could not connect to the device")
+                print("Could not connect to the devicee")
         return None
